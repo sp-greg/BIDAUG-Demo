@@ -1,0 +1,9 @@
+﻿ // Query the referrers that ran into errors
+ @content =
+     SELECT *
+     FROM SampleDBTutorials.dbo.ReferrersPerDay
+     WHERE sc_status >=400 AND sc_status < 500;
+
+ OUTPUT @content
+ TO @"/Samples/Outputs/UnsuccessfulResponses.log"
+ USING Outputters.Tsv();
